@@ -32,7 +32,7 @@ async function run(){
             const query = {_id: ObjectId(id)};
             const service = await serviceCollection.findOne(query);
             res.send(service);
-        })
+        });
 
         //PUT
         app.put('/service/:id', async (req, res) => {
@@ -47,7 +47,15 @@ async function run(){
             };
             const result = await serviceCollection.updateOne(filter,updatedDoc,options);
             res.send(result);
-        })
+        });
+
+        //Delete
+        app.delete('/service/:id', async (req, res) => {
+            const id = req.params.id;
+            const query = {_id: ObjectId(id)};
+            const result = await serviceCollection.deleteOne(query);
+            res.send(result);
+        });
             
         })
     }
