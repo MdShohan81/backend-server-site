@@ -34,7 +34,7 @@ async function run(){
             res.send(service);
         });
 
-        //PUT
+        //Update data
         app.put('/service/:id', async (req, res) => {
             const id = req.params.id;
             const updatedItem = req.body;
